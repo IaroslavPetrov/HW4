@@ -3,7 +3,7 @@ package com.company;
 public class Main<clientDeviceYear> {
 
     public static void main(String[] args) {
-
+        // 1.3 Условные операторы
         // Задача 1
         int clientOS = 1;
         if (clientOS == 0) {
@@ -88,5 +88,50 @@ public class Main<clientDeviceYear> {
                 System.out.println("Такого месяца не существует");
 
         }
+        //Задача 6
+        int age = 19;
+        int salary = 58_000;
+        int raisingLimit = 1;
+        float salaryLimit = 1f;
+        if (age >= 23) {
+            raisingLimit *= 3;
+        } else if (age < 23) {
+            raisingLimit *= 2;
+        }
+        if (salary >= 80_000) {
+            salaryLimit *= 1.5f;
+        } else if (salary >= 50_000) {
+            salaryLimit *= 1.2f;
+        }
+        float credit = salary * raisingLimit * salaryLimit;
+        System.out.println("Мы готовы выдать вам кредитную карту с лимитом " + credit + "рублей");
+
+        //Задача 7
+        int ageNew = 25;
+        int salaryNew = 60_000;
+        int wantedSum = 330_000;
+        int loanTerm = 12;
+        float basePercent = 10f;
+        float halfSalary = 50f;
+        float maxPayment = salaryNew * (halfSalary / 100);
+        float payment;
+        String decision;
+        if (ageNew < 23) {
+            basePercent += 1f;
+        }
+        if (ageNew < 30 && ageNew >= 23) {
+            basePercent += 0.5f;
+        }
+        if (salaryNew > 80_000) {
+            basePercent -= 0.7f;
+        }
+        payment = wantedSum * (1 + basePercent / 100) / loanTerm;
+        if (payment <= maxPayment) {
+            decision = "Одобрено";
+        } else {
+            decision = "Отказано";
+        }
+        System.out.println("Максимальный платеж при ЗП " + salaryNew + " равен " + maxPayment + "рублей. Платеж по кредиту " + payment + " рублей. " + decision);
     }
 }
+
